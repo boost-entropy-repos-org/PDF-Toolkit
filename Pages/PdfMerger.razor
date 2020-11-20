@@ -149,11 +149,12 @@
         IsUploadComplete = true;
     }
 
-    private void Submit()
+    private async void Submit()
     {
         Message = "Working on it...";
-        StateHasChanged();
+        await Task.Delay(1000);
         MergePdf();
+        StateHasChanged();
     }
 
     private async Task SaveAs(string filename, string file)
