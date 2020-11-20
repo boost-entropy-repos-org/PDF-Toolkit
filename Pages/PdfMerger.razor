@@ -24,47 +24,51 @@
     <!-- Main -->
     <div style="text-align: center;">
 
-        @if (! @IsSubmitComplete)
-        {
-            <div>
+        <section id="intro" class="@SpecialSectionTheme">
 
-                <h2>Upload your PDF files.</h2>
+            @if (! @IsSubmitComplete)
+            {
+                <div>
 
-                <br>
+                    <h2>Upload your PDF files.</h2>
 
-                <p style="padding-left: 12em;">
-                    <InputFile OnChange="OnInputFileChange" multiple></InputFile>
-                </p>
+                    <br>
 
-                @if (@IsUploadComplete)
-                {
-                    <p>
-                        <button class="button primary large icon solid fas fa-upload" @onclick="Submit">Submit</button>
+                    <p style="padding-left: 12em;">
+                        <InputFile OnChange="OnInputFileChange" multiple></InputFile>
                     </p>
-                }
 
-            </div>
-        }
+                    @if (@IsUploadComplete)
+                    {
+                        <p>
+                            <button class="button primary large icon solid fas fa-upload" @onclick="Submit">Submit</button>
+                        </p>
+                    }
 
-        @if (@IsMergeComplete)
-        {
-            <div>
+                </div>
+            }
 
-                <h2>Successfully Merged @TotalFiles PDF files.</h2>
-                <h1>🎉🎊</h1>
-                
-                <br>
+            @if (@IsMergeComplete)
+            {
+                <div>
 
-                <p>
-                    <button class="button primary large icon solid fas fa-download" @onclick="DownloadFile">Download</button>
-                </p>
+                    <h2>Successfully Merged @TotalFiles PDF files.</h2>
+                    <h1>🎉🎊</h1>
+                    
+                    <br>
 
-                <p>
-                    <a class="icon solid fas fa-redo alt" title="Re Do" @onclick="ReDo"></a>
-                </p>
+                    <p>
+                        <button class="button primary large icon solid fas fa-download" @onclick="DownloadFile">Download</button>
+                    </p>
 
-            </div>
-        }
+                    <p>
+                        <a class="icon solid fas fa-redo alt" title="Re Do" @onclick="ReDo"></a>
+                    </p>
+
+                </div>
+            }
+
+        </section>
 
     </div>
 
