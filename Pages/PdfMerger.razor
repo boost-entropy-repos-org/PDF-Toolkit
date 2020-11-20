@@ -166,7 +166,8 @@
             {
                 IsUploadComplete = false;
                 UploadMessage = "Upload failed! ❌";
-                UploadErrorMessage = $"Max 5 MB size allowed for each file!";
+                UploadErrorMessage = "Max 5 MB size allowed for each file!";
+                StateHasChanged();
             }
 
             await pdfFile.OpenReadStream(MaxSizeAllowed).ReadAsync(buffer);
