@@ -54,7 +54,7 @@
                     @if (@IsUploadComplete)
                     {
                         <p>
-                            <button class="button primary large" @onclick="Submit">Submit</button>
+                            <button class="button primary large icon solid fas fa-file-upload" @onclick="Submit">Submit</button>
                         </p>
 
                         <p>
@@ -69,13 +69,13 @@
             {
                 <div>
 
-                    <h2>Successfully Merged @TotalFiles PDF Files. ✔️</h2>
+                    <h2>Successfully Merged @TotalFiles PDF Files. ✅</h2>
                     <h1>🎉🎊</h1>
                     
                     <br>
 
                     <p>
-                        <button class="button primary large" @onclick="DownloadFile">Download</button>
+                        <button class="button primary large icon solid fas fa-file-download" @onclick="DownloadFile">Download</button>
                     </p>
 
                     <p>
@@ -177,7 +177,7 @@
 
         if (string.IsNullOrEmpty(UploadErrorMessage))
         {
-            UploadMessage = "Upload completed. ✔️";
+            UploadMessage = "Upload completed. ✅";
         }
     }
 
@@ -200,7 +200,7 @@
         DownloadMessage = "Starting download ... ⏳";
         await Task.Delay(100);
         await SaveAs(filename, FinalMergedPdfURL);
-        DownloadMessage = "Download started ✔️";
+        DownloadMessage = "Download started ✅";
         StateHasChanged();
     }
 }
