@@ -10,6 +10,6 @@ namespace Components
         public static List<byte[]> Pdfs { get; set; } = new List<byte[]>();
         public static int TotalFiles { get; set; } = 0;
         public static string Format { get; } = "data:application/pdf;base64,";
-        public static string FinalMergedPdf { get; set; } = string.Empty;
+        public static string FinalMergedPdfURL { get; set; } = string.Empty;
     }
 }

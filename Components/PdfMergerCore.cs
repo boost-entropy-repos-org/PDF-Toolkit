@@ -26,7 +26,7 @@ namespace Components
                 merger.Close();
                 pdfDoc.Close();
 
-                FinalMergedPdf = Format + Convert.ToBase64String(stream.ToArray());
+                FinalMergedPdfURL = Format + Convert.ToBase64String(stream.ToArray());
             }
 
             IsSubmitComplete = true;
