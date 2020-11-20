@@ -38,6 +38,14 @@
                         <InputFile OnChange="OnInputFileChange" multiple></InputFile>
                     </p>
 
+                    @if (TotalFiles > MaxFilesAllowed)
+                    {
+                        <p>
+                            <h2>Max @MaxFilesAllowed files allowed!</h2>
+                            <h1>😢</h1>
+                        </p>
+                    }
+
                     @if (@IsUploadComplete)
                     {
                         <p>
@@ -127,7 +135,7 @@
         Pdfs.Clear();
         TotalFiles = args.FileCount;
 
-        foreach (var pdfFile in args.GetMultipleFiles())
+        foreach (var pdfFile in args.GetMultipleFiles(MaxFilesAllowed))
         {
             byte[] buffer = new byte[pdfFile.Size];
             await pdfFile.OpenReadStream().ReadAsync(buffer);
