@@ -31,7 +31,7 @@
                 <div>
 
                     <h2>Upload your PDF files.</h2>
-                    <h4>Limit - 20 Files / 10 MB (Total)</h4>
+                    <h4>Limit - 20 Files / 5 MB Each</h4>
 
                     <br>
 
@@ -166,7 +166,7 @@
             {
                 IsUploadComplete = false;
                 UploadMessage = string.Empty;
-                UploadErrorMessage = $"Max 10 MB size allowed! ❌";
+                UploadErrorMessage = $"Max 5 MB size allowed for each file! ❌";
             }
 
             await pdfFile.OpenReadStream(MaxSizeAllowed).ReadAsync(buffer);
