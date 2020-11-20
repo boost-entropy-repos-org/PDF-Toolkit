@@ -40,6 +40,7 @@ namespace Components
             IsUploadComplete = false;
             Pdfs.Clear();
             TotalFiles = 0;
+            TotalSize = 0;
             SubmitMessage = string.Empty;
             DownloadMessage = string.Empty;
             UploadMessage = string.Empty;
