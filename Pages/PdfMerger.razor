@@ -53,7 +53,7 @@
                         </p>
 
                         <p>
-                            <h2>@Message</h2>
+                            <h2>@SubmitMessage</h2>
                         </p>
                     }
 
@@ -64,7 +64,7 @@
             {
                 <div>
 
-                    <h2>Successfully Merged @TotalFiles PDF files.</h2>
+                    <h2>Successfully Merged @TotalFiles PDF Files.</h2>
                     <h1>🎉🎊</h1>
                     
                     <br>
@@ -75,6 +75,10 @@
 
                     <p>
                         <a class="icon solid fas fa-redo alt" title="Re Do" @onclick="ReDo"></a>
+                    </p>
+
+                    <p>
+                        <h2>@DownloadMessage</h2>
                     </p>
 
                 </div>
@@ -151,8 +155,8 @@
 
     private async void Submit()
     {
-        Message = "Working on it...";
-        await Task.Delay(1000);
+        SubmitMessage = "Working On It ...";
+        await Task.Delay(100);
         MergePdf();
         StateHasChanged();
     }
@@ -165,6 +169,9 @@
     private async void DownloadFile()
     {
         string filename = "Merged_PDF";
+        DownloadMessage = "Starting Download ...";
+        await Task.Delay(100);
         await SaveAs(filename, FinalMergedPdfURL);
+        StateHasChanged();
     }
 }
