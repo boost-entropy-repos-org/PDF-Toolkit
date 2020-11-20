@@ -69,7 +69,7 @@
             {
                 <div>
 
-                    <h2>Successfully Merged @TotalFiles PDF Files. ✅</h2>
+                    <h2>Successfully Merged @TotalFiles PDF Files.  ✅</h2>
                     <h1>🎉🎊</h1>
                     
                     <br>
@@ -147,13 +147,13 @@
     {
         ReDo();
 
-        UploadMessage = "Uploading files ... ⏳";
+        UploadMessage = "Uploading your files ...  ⏳";
         TotalFiles = args.FileCount;
 
         if (TotalFiles > MaxFilesAllowed)
         {
             IsUploadComplete = false;
-            UploadMessage = "Upload failed! ❌";
+            UploadMessage = "Upload failed!  ❌";
             UploadErrorMessage = $"Max {MaxFilesAllowed} files allowed!";
         }
 
@@ -165,7 +165,7 @@
             if (TotalSize > MaxSizeAllowed)
             {
                 IsUploadComplete = false;
-                UploadMessage = "Upload failed! ❌";
+                UploadMessage = "Upload failed!  ❌";
                 UploadErrorMessage = "Max 5 MB size allowed for each file!";
                 StateHasChanged();
             }
@@ -178,13 +178,13 @@
 
         if (string.IsNullOrEmpty(UploadErrorMessage))
         {
-            UploadMessage = "Upload completed. ✅";
+            UploadMessage = "Upload completed.  ✅";
         }
     }
 
     private async void Submit()
     {
-        SubmitMessage = "Working On It ... ⏳";
+        SubmitMessage = "Merging your files, please have patience ...  ⏳";
         await Task.Delay(100);
         MergePdf();
         StateHasChanged();
@@ -198,10 +198,10 @@
     private async void DownloadFile()
     {
         string filename = "Merged_PDF";
-        DownloadMessage = "Starting download ... ⏳";
+        DownloadMessage = "Starting download ...  ⏳";
         await Task.Delay(100);
         await SaveAs(filename, FinalMergedPdfURL);
-        DownloadMessage = "Download started ✅";
+        DownloadMessage = "Download started  ✅";
         StateHasChanged();
     }
 }
