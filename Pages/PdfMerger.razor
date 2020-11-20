@@ -153,8 +153,8 @@
         if (TotalFiles > MaxFilesAllowed)
         {
             IsUploadComplete = false;
-            UploadMessage = string.Empty;
-            UploadErrorMessage = $"Max {MaxFilesAllowed} files allowed! ❌";
+            UploadMessage = "Upload failed! ❌";
+            UploadErrorMessage = $"Max {MaxFilesAllowed} files allowed!";
         }
 
         foreach (var pdfFile in args.GetMultipleFiles(MaxFilesAllowed))
@@ -165,8 +165,8 @@
             if (TotalSize > MaxSizeAllowed)
             {
                 IsUploadComplete = false;
-                UploadMessage = string.Empty;
-                UploadErrorMessage = $"Max 5 MB size allowed for each file! ❌";
+                UploadMessage = "Upload failed! ❌";
+                UploadErrorMessage = $"Max 5 MB size allowed for each file!";
             }
 
             await pdfFile.OpenReadStream(MaxSizeAllowed).ReadAsync(buffer);
