@@ -44,6 +44,8 @@ namespace Components
             SubmitMessage = string.Empty;
             DownloadMessage = string.Empty;
             UploadMessage = string.Empty;
+            UploadErrorMessage = string.Empty;
+            FinalMergedPdfURL = string.Empty;
         }
 
         // public static void Submit()

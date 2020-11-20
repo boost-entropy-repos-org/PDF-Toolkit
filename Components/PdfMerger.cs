@@ -10,6 +10,7 @@ namespace Components
         public static List<byte[]> Pdfs { get; set; } = new List<byte[]>();
         public static string SubmitMessage { get; set; } = string.Empty;
         public static string UploadMessage { get; set; } = string.Empty;
+        public static string UploadErrorMessage { get; set; } = string.Empty;
         public static string DownloadMessage { get; set; } = string.Empty;
         public static int TotalFiles { get; set; } = 0;
         public static int MaxFilesAllowed { get; } = 20;
