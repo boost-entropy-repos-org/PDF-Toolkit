@@ -42,6 +42,7 @@ namespace Components
             TotalFiles = 0;
             SubmitMessage = string.Empty;
             DownloadMessage = string.Empty;
+            UploadMessage = string.Empty;
         }
 
         // public static void Submit()
