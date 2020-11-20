@@ -49,7 +49,11 @@
                     @if (@IsUploadComplete)
                     {
                         <p>
-                            <button class="button primary large icon solid fas fa-upload" @onclick="Submit">Submit</button>
+                            <button class="button primary large" @onclick="Submit">Submit</button>
+                        </p>
+
+                        <p>
+                            <h2>@Message</h2>
                         </p>
                     }
 
@@ -66,7 +70,7 @@
                     <br>
 
                     <p>
-                        <button class="button primary large icon solid fas fa-download" @onclick="DownloadFile">Download</button>
+                        <button class="button primary large" @onclick="DownloadFile">Download</button>
                     </p>
 
                     <p>
@@ -143,6 +147,13 @@
         }
 
         IsUploadComplete = true;
+    }
+
+    private void Submit()
+    {
+        Message = "Working on it...";
+        StateHasChanged();
+        MergePdf();
     }
 
     private async Task SaveAs(string filename, string file)

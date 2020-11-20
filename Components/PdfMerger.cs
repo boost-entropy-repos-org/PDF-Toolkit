@@ -8,6 +8,7 @@ namespace Components
         public static bool IsMergeComplete { get; set; } = false;
         public static bool IsSubmitComplete { get; set; } = false;
         public static List<byte[]> Pdfs { get; set; } = new List<byte[]>();
+        public static string Message { get; set; } = string.Empty;
         public static int TotalFiles { get; set; } = 0;
         public static int MaxFilesAllowed { get; } = 20;
         public static string Format { get; } = "data:application/pdf;base64,";

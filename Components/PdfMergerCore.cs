@@ -42,6 +42,10 @@ namespace Components
             TotalFiles = 0;
         }
 
-        public static void Submit() => MergePdf();
+        // public static void Submit()
+        // {
+        //     Message = "Working on it...";
+        //     MergePdf();
+        // }
     }
 }
