@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>PDF Toolkit - Subham Karmakar</title>
-    <meta name="description" content="Check weather of your current location.">
+    <meta name="description" content="A toolkit for manipulating PDF files.">
     <base href="/" />
     <link rel="shortcut icon" href="favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
@@ -83,7 +83,7 @@
 <!-- Scripts for toggling the theme -->
 <script type="text/javascript">
 
-    function GetCurrentTheme() {
+    function getCurrentTheme() {
         if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
             return 'icon solid fas fa-sun';
         } else {
@@ -91,7 +91,7 @@
         }
     }
 
-    function ToggleBodyTheme(themeIcon) {
+    function toggleBodyTheme(themeIcon) {
         if (themeIcon == 'icon solid fas fa-sun') {
             document.body.className = 'light';
         } else {
