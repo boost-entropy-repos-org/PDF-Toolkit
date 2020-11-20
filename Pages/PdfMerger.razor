@@ -1,0 +1,146 @@
+@page "/pdfmerger"
+@using static Components.ThemeChanger
+@using static Components.PdfMerger
+@using static Components.PdfMergerCore
+@inject IJSRuntime JSRuntime
+
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- Header -->
+    <header id="header">
+
+        <h1>PDF Merger</h1>
+
+        @if (! string.IsNullOrEmpty(ThemeIcon))
+        {
+            <a id="themeSwitch" @onclick="ToggleFullTheme" class="@ThemeIcon" style="margin-top: 1.3em;" title="Change Theme"></a>
+        }
+
+    </header>
+
+
+    <!-- Main -->
+    <div style="text-align: center;">
+
+        @if (! @IsSubmitComplete)
+        {
+            <div>
+
+                <h2>Upload your PDF files.</h2>
+
+                <br>
+
+                <p style="padding-left: 12em;">
+                    <InputFile OnChange="OnInputFileChange" multiple></InputFile>
+                </p>
+
+                @if (@IsUploadComplete)
+                {
+                    <p>
+                        <button class="button primary large icon solid fas fa-upload" @onclick="Submit">Submit</button>
+                    </p>
+                }
+
+            </div>
+        }
+
+        @if (@IsMergeComplete)
+        {
+            <div>
+
+                <h2>Successfully Merged @TotalFiles PDF files.</h2>
+                <h1>🎉🎊</h1>
+                
+                <br>
+
+                <p>
+                    <button class="button primary large icon solid fas fa-download" @onclick="DownloadFile">Download</button>
+                </p>
+
+                <p>
+                    <a class="icon solid fas fa-redo alt" title="Re Do" @onclick="ReDo"></a>
+                </p>
+
+            </div>
+        }
+
+    </div>
+
+@* 
+    <!-- Footer -->
+    <footer id="footer">
+        <section style="text-align: center;">
+            <img src="../images/square_crop_less.jpg" alt="" style="max-width: 93px; border-radius: 50%;" />
+            <h3 style="font-weight: bold;">Subham Karmakar</h3>
+            <p>Coding / Programming || Cloud || Software || Computers || Football</p>
+            <a href="https://www.subhamk.com" class="button">About Me</a>
+            <a href="https://blogs.subhamk.com" class="button">My Blogs</a>
+            <a href="https://cheatsheets.subhamk.com" class="button">My CheatSheets</a>
+        </section>
+        <section>
+            <h2 style="text-align: center;">Follow</h2>
+            <ul class="icons" style="text-align: center;">
+                <li><a href="https://www.twitter.com/SubhamK108" class="icon brands fab fa-twitter alt"></a></li>
+                <!-- <li><a href="#" class="icon brands fa-facebook-f alt"></a></li> -->
+                <!-- <li><a href="#" class="icon brands fa-instagram alt"></a></li> -->
+                <!-- <li><a href="#" class="icon brands fa-linkedin-in alt"></a></li> -->
+                <li><a href="https://www.github.com/SubhamK108" class="icon brands fab fa-github alt" title="GitHub"></a></li>
+                <li><a href="https://www.hackerrank.com/SubhamK108" class="icon brands fab fa-hackerrank alt" title="HackerRank"></a></li>
+                <li><a href="https://www.leetcode.com/SubhamK108" class="icon solid fas fa-code alt" title="LeetCode"></a></li>
+            </ul>
+        </section>
+    </footer> *@
+
+</div>
+
+
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        if (IsFirstLoad)
+        {
+            IsFirstLoad = false;
+            await GetThemeIcon();
+        }
+    }
+    
+    private async Task GetThemeIcon()
+    {
+        ThemeIcon = await JSRuntime.InvokeAsync<string>("getCurrentTheme");
+    }
+
+    private void ToggleFullTheme()
+    {
+        JSRuntime.InvokeVoidAsync("toggleBodyTheme", ThemeIcon);
+        ToggleTheme();
+    }
+
+    private async Task OnInputFileChange(InputFileChangeEventArgs args)
+    {
+        Pdfs.Clear();
+        TotalFiles = args.FileCount;
+
+        foreach (var pdfFile in args.GetMultipleFiles())
+        {
+            byte[] buffer = new byte[pdfFile.Size];
+            await pdfFile.OpenReadStream().ReadAsync(buffer);
+            Pdfs.Add(buffer);
+        }
+
+        IsUploadComplete = true;
+    }
+
+    private async Task SaveAs(string filename, string file)
+    {
+        await JSRuntime.InvokeVoidAsync("saveAsFile", filename, file);
+    }
+
+    private async void DownloadFile()
+    {
+        string filename = "Merged_PDF";
+        await SaveAs(filename, FinalMergedPdf);
+    }
+}
