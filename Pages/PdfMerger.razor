@@ -198,15 +198,19 @@
                 StateHasChanged();
             }
 
-            await pdfFile.OpenReadStream(MaxSizeAllowed).ReadAsync(buffer);
-            Pdfs.Add(buffer);
-            uploadedFiles.Add(pdfFile);
+            if (FileType == FileTypeAllowed)
+            {
+                await pdfFile.OpenReadStream(MaxSizeAllowed).ReadAsync(buffer);
+                Pdfs.Add(buffer);
+                uploadedFiles.Add(pdfFile);
+            }
         }
 
         if (string.IsNullOrEmpty(UploadErrorMessage))
         {
             if (TotalFiles == 1)
             {
+                uploadedFiles.Clear();
                 UploadMessage = $"Just {TotalFiles} PDF file uploaded, which is not enough! You have to upload at least 2 files.  😕";
             }
             else
