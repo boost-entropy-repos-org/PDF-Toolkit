@@ -16,6 +16,8 @@ namespace Components
         public static int MaxFilesAllowed { get; } = 20;
         public static long TotalSize { get; set; } = 0;
         public static long MaxSizeAllowed { get; } = 5242880;
+        public static string FileType { get; set; } = "application/pdf";
+        public static string FileTypeAllowed { get; } = "application/pdf";
         public static string Format { get; } = "data:application/pdf;base64,";
         public static string FinalMergedPdfURL { get; set; } = string.Empty;
     }

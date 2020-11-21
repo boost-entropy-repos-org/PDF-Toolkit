@@ -4972,3 +4972,34 @@ input, select, textarea {
 			}
 
 		}
+
+
+
+/* Blazor <InputFile> Styles */
+	.dropzone {
+		border: 4px dashed #05576b;
+		padding: 3em;
+		margin-left: 9em;
+		margin-right: 9em;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: transparent;
+		box-shadow: inset 0 0 8px rgba(0,0,0,0.2);
+		color: rgba(255, 255, 255, 0.65);
+		font-size: 1.4em;
+		cursor: pointer;
+		position: relative;
+	}
+
+		/* .dropzone:hover {
+			background-color: #05576b;
+		} */
+
+		.dropzone input[type=file] {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			opacity: 0;
+			cursor: pointer;
+		}
