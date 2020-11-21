@@ -4979,8 +4979,8 @@ input, select, textarea {
 	.dropzone {
 		border: 4px dashed #05576b;
 		padding: 3em;
-		margin-left: 9em;
-		margin-right: 9em;
+		margin-left: 30px;
+		margin-right: 30px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
