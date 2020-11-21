@@ -60,11 +60,19 @@
                                 <p style="margin: 0.5em;">
                                     @file.Name
                                     <a class="icon solid fas fa-times-circle" title="Remove File" @onclick="@(e => RemoveFile(file))" style="padding-left: 1em;"></a>
+
+                                    @if (uploadedFiles.IndexOf(file) > 0)
+                                    {
+                                        <a class="icon solid fas fa-arrow-circle-up" title="Move File Up" @onclick="@(e => MoveFileUp(file))" style="padding-left: 1em;"></a>
+                                    }
+
+                                    @if (uploadedFiles.IndexOf(file) < (uploadedFiles.Count - 1))
+                                    {
+                                        <a class="icon solid fas fa-arrow-circle-down" title="Move File Down" @onclick="@(e => MoveFileDown(file))" style="padding-left: 1em;"></a>
+                                    }
                                 </p>
                             }
                         </div>
-
-                        <br>
                     }
 
                     @if (@IsUploadComplete)
@@ -265,6 +273,34 @@
         }
 
         Pdfs.RemoveAt(index);
+    }
+
+    private void MoveFileUp(IBrowserFile file)
+    {
+        IBrowserFile movingFile = file;
+        int index = uploadedFiles.IndexOf(file);
+        uploadedFiles.RemoveAt(index);
+        uploadedFiles.Insert(index - 1, movingFile);
+        movingFile = null;
+
+        byte[] movingBuffer = Pdfs[index];
+        Pdfs.RemoveAt(index);
+        Pdfs.Insert(index - 1, movingBuffer);
+        movingBuffer = null;
+    }
+
+    private void MoveFileDown(IBrowserFile file)
+    {
+        IBrowserFile movingFile = file;
+        int index = uploadedFiles.IndexOf(file);
+        uploadedFiles.RemoveAt(index);
+        uploadedFiles.Insert(index + 1, movingFile);
+        movingFile = null;
+
+        byte[] movingBuffer = Pdfs[index];
+        Pdfs.RemoveAt(index);
+        Pdfs.Insert(index + 1, movingBuffer);
+        movingBuffer = null;
     }
 
     private void Refresh()
