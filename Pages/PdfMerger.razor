@@ -250,12 +250,9 @@
         uploadedFiles.RemoveAt(index);
         TotalFiles = uploadedFiles.Count;
 
-        if (TotalFiles == 0)
+        if (TotalFiles == 1)
         {
-            UploadMessage = $"There are now no PDF files left!  ❌";
-        }
-        else if (TotalFiles == 1)
-        {
+            uploadedFiles.Clear();
             UploadMessage = $"Not enough PDF files left! At least 2 files are needed.  😕";
             IsUploadComplete = false;
         }
