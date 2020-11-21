@@ -171,6 +171,7 @@
 
         if (TotalFiles > MaxFilesAllowed)
         {
+            uploadedFiles.Clear();
             IsUploadComplete = false;
             UploadMessage = "Upload failed!  ❌";
             UploadErrorMessage = $"Max {MaxFilesAllowed} files allowed!";
@@ -180,10 +181,10 @@
         {
             TotalSize = pdfFile.Size;
             FileType = pdfFile.ContentType;
-            byte[] buffer = new byte[pdfFile.Size];
 
             if (TotalSize > MaxSizeAllowed)
             {
+                uploadedFiles.Clear();
                 IsUploadComplete = false;
                 UploadMessage = "Upload failed!  ❌";
                 UploadErrorMessage = "Max 5 MB size allowed for each file!";
@@ -192,6 +193,7 @@
 
             if (FileType != FileTypeAllowed)
             {
+                uploadedFiles.Clear();
                 IsUploadComplete = false;
                 UploadMessage = "Upload failed!  ❌";
                 UploadErrorMessage = "You can only upload PDF files!";
@@ -200,6 +202,7 @@
 
             if (FileType == FileTypeAllowed)
             {
+                byte[] buffer = new byte[pdfFile.Size];
                 await pdfFile.OpenReadStream(MaxSizeAllowed).ReadAsync(buffer);
                 Pdfs.Add(buffer);
                 uploadedFiles.Add(pdfFile);
