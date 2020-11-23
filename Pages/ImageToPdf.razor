@@ -165,6 +165,7 @@
 
     private async Task OnInputFileChange(InputFileChangeEventArgs args)
     {
+        previewImageURL = string.Empty;
         uploadedImage = null;
         RefreshApp();
 
@@ -176,6 +177,7 @@
 
         if (TotalSize > MaxSizeAllowed)
         {
+            previewImageURL = string.Empty;
             uploadedImage = null;
             IsUploadComplete = false;
             UploadMessage = "Upload failed!  ❌";
@@ -185,6 +187,7 @@
 
         if (! Array.Exists(FileTypesAllowed, e => e.Equals(FileType)))
         {
+            previewImageURL = string.Empty;
             uploadedImage = null;
             IsUploadComplete = false;
             UploadMessage = "Upload failed!  ❌";
@@ -242,6 +245,7 @@
 
     private void Refresh()
     {
+        previewImageURL = string.Empty;
         uploadedImage = null;
         RefreshApp();
     }
