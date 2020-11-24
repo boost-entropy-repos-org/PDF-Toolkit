@@ -5003,3 +5003,16 @@ input, select, textarea {
 			opacity: 0;
 			cursor: pointer;
 		}
+
+
+
+/* Password Input Text Box Styles */
+	.password-input input[type=password] {
+		font-size: 1.2em;
+		font-family: 'Fira Code', monospace;
+		text-align: center;
+		height: 1.9em;
+		width: 45%;
+		margin: auto;
+	}
+
