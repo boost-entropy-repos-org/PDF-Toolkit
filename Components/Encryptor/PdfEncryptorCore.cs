@@ -19,7 +19,10 @@ namespace Components.Encryptor
 
                 PdfWriter pdfWriter = new PdfWriter(stream, writerProperties);
                 PdfDocument pdfDocument = new PdfDocument(pdfReader, pdfWriter);
+
                 pdfDocument.Close();
+                pdfReader.Close();
+                pdfWriter.Close();
 
                 FinalEncryptedPdfURL = Format + Convert.ToBase64String(stream.ToArray());
             }
