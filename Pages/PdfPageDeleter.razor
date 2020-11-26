@@ -255,7 +255,14 @@
 
     private async void Submit()
     {
-        totalPagesToDelete = Convert.ToInt32(pageno.Split('-')[1]) - Convert.ToInt32(pageno.Split('-')[0]) + 1;
+        if (pageno.Contains('-'))
+        {
+            totalPagesToDelete = Convert.ToInt32(pageno.Split('-')[1]) - Convert.ToInt32(pageno.Split('-')[0]) + 1;
+        }
+        else
+        {
+            totalPagesToDelete = 1;
+        }
         
         if (totalPagesToDelete == 1)
         {
