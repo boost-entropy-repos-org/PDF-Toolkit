@@ -5016,3 +5016,15 @@ input, select, textarea {
 		margin: auto;
 	}
 
+
+
+/* Page Number Input Text Box Styles */
+	.pageno-input input[type=text] {
+		font-size: 1.2em;
+		font-family: 'Fira Code', monospace;
+		text-align: center;
+		height: 1.9em;
+		width: 9em;
+		margin: auto;
+	}
+

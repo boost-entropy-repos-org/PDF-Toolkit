@@ -237,8 +237,19 @@
 
         if (string.IsNullOrEmpty(UploadErrorMessage))
         {
-            IsUploadComplete = true;
-            UploadMessage = "PDF file uploaded.  ✅";
+            if (TotalPages == 1)
+            {
+                pageno = string.Empty;
+                totalPagesToDelete = 0;
+                uploadedFile = null;
+                IsUploadComplete = false;
+                UploadMessage = $"That PDF file has only {TotalPages} page, which is not enough! It must have at least 2 pages.  😕";
+            }
+            else
+            {
+                IsUploadComplete = true;
+                UploadMessage = "PDF file uploaded.  ✅";
+            }
         }
     }
 
