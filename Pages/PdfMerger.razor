@@ -52,7 +52,7 @@
                         </p>
                     }
 
-                    @if (uploadedFiles.Count > 0)
+                    @if (uploadedFiles.Count > 0 && IsUploadComplete)
                     {
                         <div>
                             @foreach (IBrowserFile file in uploadedFiles)
