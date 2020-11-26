@@ -55,9 +55,11 @@
                     @if (uploadedFiles.Count > 0 && IsUploadComplete)
                     {
                         <div>
+
                             @foreach (IBrowserFile file in uploadedFiles)
                             {
                                 <p style="margin: 0.5em;">
+
                                     @file.Name
                                     <a class="icon solid fas fa-times-circle" title="Remove File" @onclick="@(e => RemoveFile(file))" style="padding-left: 1em;"></a>
 
@@ -70,8 +72,10 @@
                                     {
                                         <a class="icon solid fas fa-arrow-circle-down" title="Move File Down" @onclick="@(e => MoveFileDown(file))" style="padding-left: 1em;"></a>
                                     }
+                                    
                                 </p>
                             }
+
                         </div>
                     }
 
@@ -234,7 +238,7 @@
 
     private async void Submit()
     {
-        SubmitMessage = "Merging your files, please have patience ...  ⏳";
+        SubmitMessage = $"Merging {TotalFiles} PDF files, please have patience ...  ⏳";
         await Task.Delay(100);
         MergePdf();
         StateHasChanged();
